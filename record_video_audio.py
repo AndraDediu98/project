@@ -51,8 +51,7 @@ def record_audio():
     wf.setframerate(sample_rate)
     wf.writeframes(b"".join(frames))
     wf.close()
-    cmd='ffmpeg -y -i video.avi -i audio.wav -map 0:v -map 1:a -c copy output.avi'
-    subprocess.call(cmd,shell=True)
+    subprocess.run(["C:/proiect/ffmpeg","-y", "-i", "video.avi", "-i", "audio.wav", "-map", "0:v", "-map", "1:a", "-c", "copy", "output.avi"],creationflags=subprocess.CREATE_NO_WINDOW)
     get_db('audio.wav')
     print('Muxing Done')
     
@@ -79,4 +78,3 @@ def record_video():
 if __name__=='__main__':
     Thread(target=record_video).start()
     Thread(target=record_audio).start()
- 
