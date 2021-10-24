@@ -35,4 +35,8 @@ driver.implicitly_wait(20)
 xpath_play_btn='/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[5]/div[1]/div/div[1]/div/div/div/ytd-player/div/div/div[5]/button'
 wait.until(EC.element_to_be_clickable((By.XPATH, xpath_play_btn))).click()
 xpath_skip_btn='/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[5]/div[1]/div/div[1]/div/div/div/ytd-player/div/div/div[4]/div/div[3]/div/div[2]/span/button/div'
-wait.until(EC.element_to_be_clickable((By.XPATH, xpath_skip_btn))).click()
+try:
+    wait.until(EC.element_to_be_clickable((By.XPATH, xpath_skip_btn))).click()
+except:
+    print("no skip btn")
+
