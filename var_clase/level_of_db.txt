@@ -1,0 +1,7 @@
+The level of db is: 72.95157108424911
+The level of db is: 71.43650498081658
+The level of db is: 51.64126725823418
+The level of db is: 66.89962827854517
+The level of db is: 67.74067402564727
+The level of db is: 46.64876919831211
+The level of db is: 70.56290156506213
