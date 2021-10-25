@@ -22,7 +22,6 @@ def get_db(wav):
 
 def navigateWeb():
     web=Web()
-    web.setUp()
     web.acceptCookie()
     web.searchSong()
     web.getRandomSong()
@@ -32,9 +31,7 @@ def navigateWeb():
             break
 def recordAudioVideo():
     audio=RecordAudio()
-    audio.setUp()
     video=RecordVideo()
-    video.setUp()
     while True:
         if keyboard.is_pressed('r'):
             break

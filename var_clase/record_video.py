@@ -5,12 +5,13 @@ import keyboard
 from threading import Thread
 
 class RecordVideo():
-    def setUp(self,filename : str ="video.avi"):
+    def __init__(self,filename : str ="video.avi"):
         self.screenSize=(1366, 768)
         self.fourcc = cv2.VideoWriter_fourcc(*"XVID")
         self.filename=filename
         self.out = cv2.VideoWriter(self.filename, self.fourcc, 20.0, self.screenSize)
     def record(self):
+        print("start recording")
         while True:
             img = pyautogui.screenshot()
             frame = np.array(img)
@@ -18,6 +19,7 @@ class RecordVideo():
             self.out.write(frame)
             if keyboard.is_pressed('q'):
                 break
+        print("finish video recording")
         cv2.destroyAllWindows()
         self.out.release()
     def joinThread(self):

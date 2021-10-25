@@ -4,7 +4,7 @@ import keyboard
 from threading import Thread
 
 class RecordAudio():
-    def setUp(self,filename : str = "audio.wav"):
+    def __init__(self,filename : str = "audio.wav"):
         self.filename = filename
         self.chunk = 1024
         self.FORMAT = pyaudio.paInt16

@@ -10,7 +10,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 class Web():
     
-    def setUp(self):
+    def __init__(self):
         self.driver = self.create_driver()
         self.openSite()
     def create_driver(self):
@@ -36,8 +36,11 @@ class Web():
         self.driver.get(links[nr_video])
     def playSong(self):
         xpath_play_btn='/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[5]/div[1]/div/div[1]/div/div/div/ytd-player/div/div/div[5]/button'
-        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, xpath_play_btn))).click()
         xpath_skip_btn='/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[5]/div[1]/div/div[1]/div/div/div/ytd-player/div/div/div[4]/div/div[3]/div/div[2]/span/button/div'
+        try:
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, xpath_play_btn))).click()
+        except:
+            print("can't play video")
         try:
             WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, xpath_skip_btn))).click()
         except:
