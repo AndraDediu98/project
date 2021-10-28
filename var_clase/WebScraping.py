@@ -68,8 +68,9 @@ class Web():
                 print("can't click search btn")
     def getRandomSong(self):
         while self.is_connected()==False:
-            continue    
-        for i in range(5):
+            continue 
+        user_data=""
+        while len(user_data)==0:
             try:
                 user_data = self.driver.find_elements_by_xpath('//a[@id="thumbnail"]')
             except:
