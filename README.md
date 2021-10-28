@@ -11,9 +11,10 @@ INSTALL SELENIUM
 ```
 pip install selenium
 ```
-INSTALL WEBDRIVER TO AUTOMATICALLY DOWNLOAD CHROMEDRIVER
+INSTALL WEBDRIVER 
 ```
-pip install webdriver-manager
+download chrome driver for your version of chrome from this link: https://chromedriver.chromium.org/downloads
+in the create_driver method add the path to chromedriver.exe in the executable_path variable
 ```
 INSTALL OPENCV, PYAUTOGUY,NUMPY
 ```
