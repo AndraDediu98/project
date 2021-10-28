@@ -1,5 +1,5 @@
 # project
-##INSTALL
+## INSTALL
 
 INSTALL PYTHON
 ```
@@ -43,7 +43,7 @@ pip install "path\to\your\wheel\file\scipy-0.18.1-cp27-cp27m-win_amd64.whl"
 ```
 
 
-##RUN
+## RUN
 ```
 run main.py 
 to stard record press r and to stop the record press q
