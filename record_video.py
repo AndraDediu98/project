@@ -1,21 +1,26 @@
 import cv2
 import numpy as np
 import pyautogui
+import keyboard
+from threading import Thread
 
-# display screen resolution, get it from your OS settings
-SCREEN_SIZE = (1360, 768)
-# define the codec
-fourcc = cv2.VideoWriter_fourcc(*"XVID")
-# create the video write object
-out = cv2.VideoWriter("output.avi", fourcc, 20.0, (SCREEN_SIZE))
-
-for i in range(200):
-    # make a screenshot
-    img = pyautogui.screenshot()
-    # convert these pixels to a proper numpy array to work with OpenCV
-    frame = np.array(img)
-    # convert colors from BGR to RGB
-    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    # write the frame
-    out.write(frame)
-out.release()
+class RecordVideo():
+    def __init__(self,filename : str ="video.avi"):
+        self.screenSize=(1366, 768)
+        self.fourcc = cv2.VideoWriter_fourcc(*"XVID")
+        self.filename=filename
+        self.out = cv2.VideoWriter(self.filename, self.fourcc, 16.0, self.screenSize)
+    def record(self, duration : int =120):
+        print("start recording")
+        for i in range(15 * duration):
+            img = pyautogui.screenshot()
+            frame = np.array(img)
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            self.out.write(frame)
+            if keyboard.is_pressed('q'):
+                break
+        print("finish video recording")
+        cv2.destroyAllWindows()
+        self.out.release()
+    def joinThread(self):
+        return Thread(target=self.record)
