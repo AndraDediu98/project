@@ -9,10 +9,10 @@ class RecordVideo():
         self.screenSize=(1366, 768)
         self.fourcc = cv2.VideoWriter_fourcc(*"XVID")
         self.filename=filename
-        self.out = cv2.VideoWriter(self.filename, self.fourcc, 20.0, self.screenSize)
-    def record(self):
+        self.out = cv2.VideoWriter(self.filename, self.fourcc, 16.0, self.screenSize)
+    def record(self, duration : int =120):
         print("start recording")
-        while True:
+        for i in range(15 * duration):
             img = pyautogui.screenshot()
             frame = np.array(img)
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)

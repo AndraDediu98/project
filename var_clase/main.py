@@ -37,8 +37,10 @@ def recordAudioVideo():
             break
     task1=audio.joinThread()
     task2=video.joinThread()
-    task1.start()
     task2.start()
+    task1.start()
+    task1.join()
+    task2.join()
     while task1.is_alive() and  task2.is_alive():
         continue
     subprocess.run(["C:/proiect/ffmpeg","-y", "-i", video.filename, "-i", audio.filename, "-map", "0:v", "-map", "1:a", "-c", "copy", "out.avi"],creationflags=subprocess.CREATE_NO_WINDOW)
@@ -48,5 +50,9 @@ def recordAudioVideo():
 
 
 if __name__ == '__main__':
-    Thread(target=navigateWeb).start()
-    Thread(target=recordAudioVideo).start()
+    task1=Thread(target=navigateWeb)
+    task2=Thread(target=recordAudioVideo)
+    task1.start()
+    task2.start()
+    task1.join()
+    task2.join()

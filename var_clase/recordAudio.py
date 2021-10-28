@@ -4,14 +4,13 @@ import keyboard
 from threading import Thread
 
 class RecordAudio():
-    def __init__(self,filename : str = "audio.wav"):
+    def __init__(self,filename : str = "audio.wav" ):
         self.filename = filename
         self.chunk = 1024
         self.FORMAT = pyaudio.paInt16
         self.channels = 1
         self.sample_rate = 44100
-        self.record_seconds = 5
-    def record(self):
+    def record(self,duration : int =120):
         p = pyaudio.PyAudio()
         stream = p.open(format=self.FORMAT,
                         channels=self.channels,
@@ -21,7 +20,7 @@ class RecordAudio():
                         frames_per_buffer=self.chunk)
         frames = []
         print("Recording...")
-        while True:
+        for i in range(int(44100 / self.chunk * duration)):
             data = stream.read(self.chunk)
             frames.append(data)
             if keyboard.is_pressed('q'):
